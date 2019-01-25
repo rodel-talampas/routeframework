@@ -1353,8 +1353,10 @@ body {
 .off-canvas-sidebar .sidebar-wrapper .user .info [data-toggle="collapse"] ~ div > ul > li > a span,
 .sidebar .navbar-minimize,
 .off-canvas-sidebar .navbar-minimize,
+.sidebar .logo div.logo-mini,
 .sidebar .logo a.logo-mini,
 .sidebar .logo a.logo-normal,
+.off-canvas-sidebar .logo div.logo-mini,
 .off-canvas-sidebar .logo a.logo-mini,
 .off-canvas-sidebar .logo a.logo-normal,
 .tag,
@@ -1366,8 +1368,10 @@ body {
 .off-canvas-sidebar .sidebar-wrapper .user .info [data-toggle="collapse"] ~ div > ul > li > a span,
 .sidebar .navbar-minimize,
 .off-canvas-sidebar .navbar-minimize,
+.sidebar .logo div.logo-mini,
 .sidebar .logo a.logo-mini,
 .sidebar .logo a.logo-normal,
+.off-canvas-sidebar .logo div.logo-mini,
 .off-canvas-sidebar .logo a.logo-mini,
 .off-canvas-sidebar .logo a.logo-normal {
   -webkit-transition: all 300ms ease 0s;
@@ -2827,7 +2831,9 @@ Created using IcoMoon - icomoon.io
     position: relative;
     padding: 0.5rem 0.7rem;
     z-index: 4; }
-    .sidebar .logo a.logo-mini ,
+    .sidebar .logo div.logo-mini,
+    .sidebar .logo a.logo-mini,
+    .off-canvas-sidebar .logo div.logo-mini,
     .off-canvas-sidebar .logo a.logo-mini {
       opacity: 1;
       float: left;
@@ -2835,14 +2841,6 @@ Created using IcoMoon - icomoon.io
       text-align: center;
       margin-left: 10px;
       margin-right: 12px; }
-      .sidebar .logo div.logo-mini ,
-      .off-canvas-sidebar .logo div.logo-mini {
-        opacity: 1;
-        float: left;
-        width: 34px;
-        text-align: center;
-        margin-left: 10px;
-        margin-right: 12px; }
     .sidebar .logo a.logo-normal,
     .off-canvas-sidebar .logo a.logo-normal {
       display: block;
@@ -2958,25 +2956,15 @@ Created using IcoMoon - icomoon.io
     .sidebar[data-color="yellow"] .nav li.active > a i,
     .off-canvas-sidebar[data-color="yellow"] .nav li.active > a i {
       color: #FFB236; }
-  .sidebar[data-color="gold"]:after,
-  .off-canvas-sidebar[data-color="gold"]:after {
-    background: #B8860B; }
-  .sidebar[data-color="gold"] .nav li.active > a,
-  .off-canvas-sidebar[data-color="gold"] .nav li.active > a {
-    color: #B8860B; }
-    .sidebar[data-color="gold"] .nav li.active > a i,
-    .off-canvas-sidebar[data-color="gold"] .nav li.active > a i {
-      color: #B8860B; }
-  .sidebar[data-color="olive"]:after,
-  .off-canvas-sidebar[data-color="olive"]:after {
+  .sidebar[data-color="saturatedyellow"]:after,
+  .off-canvas-sidebar[data-color="saturatedyellow"]:after {
     background: #6c6b45; }
-  .sidebar[data-color="olive"] .nav li.active > a,
-  .off-canvas-sidebar[data-color="olive"] .nav li.active > a {
+  .sidebar[data-color="saturatedyellow"] .nav li.active > a,
+  .off-canvas-sidebar[data-color="saturatedyellow"] .nav li.active > a {
     color: #6c6b45; }
-    .sidebar[data-color="olive"] .nav li.active > a i,
-    .off-canvas-sidebar[data-color="olive"] .nav li.active > a i {
+    .sidebar[data-color="saturatedyellow"] .nav li.active > a i,
+    .off-canvas-sidebar[data-color="saturatedyellow"] .nav li.active > a i {
       color: #6c6b45; }
-
 
 .visible-on-sidebar-regular {
   display: inline-block !important; }

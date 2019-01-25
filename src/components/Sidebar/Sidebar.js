@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
   }
   render() {
     return (
-      <div className="sidebar" data-color="olive">
+      <div className="sidebar" data-color="saturatedyellow">
         <div className="logo">
           <div
             className="simple-text logo-mini"

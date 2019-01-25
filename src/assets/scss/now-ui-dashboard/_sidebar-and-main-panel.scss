@@ -214,11 +214,12 @@
         padding: $padding-base-vertical $padding-base-horizontal;
         z-index: 4;
 
+        div.logo-mini,
         a.logo-mini,
         a.logo-normal{
             @extend .animation-transition-general;
         }
-
+        div.logo-mini,
         a.logo-mini{
             opacity: 1;
             float: left;
@@ -314,6 +315,9 @@
     }
     &[data-color="yellow"]{
       @include sidebar-color($warning-color);
+    }
+    &[data-color="saturatedyellow"]{
+      @include sidebar-color($sidebar-color);
     }
 
 }
