@@ -2548,6 +2548,17 @@ Created using IcoMoon - icomoon.io
     padding-top: 0;
     padding-bottom: 0; }
 
+.card-tickets .card-body .table {
+  margin-bottom: 0; }
+  .card-tickets .card-body .table > thead > tr > th,
+  .card-tickets .card-body .table > tbody > tr > th,
+  .card-tickets .card-body .table > tfoot > tr > th,
+  .card-tickets .card-body .table > thead > tr > td,
+  .card-tickets .card-body .table > tbody > tr > td,
+  .card-tickets .card-body .table > tfoot > tr > td {
+    padding-top: 0;
+    padding-bottom: 0; }
+
 .table > thead > tr > th {
   border-bottom-width: 1px;
   font-size: 1.45em;

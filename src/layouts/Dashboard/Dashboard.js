@@ -7,14 +7,26 @@ import { Header, Footer, Sidebar } from "../../components";
 
 import dashboardRoutes from "../../routes/dashboard.js";
 
+
+import { keycloak } from '../../components/Keycloak/keycloak-config';
+
 var ps;
 
 class Dashboard extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { keycloak: null, authenticated: false };
+  }
+
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.refs.mainPanel);
       document.body.classList.toggle("perfect-scrollbar-on");
     }
+    keycloak.init({onLoad: 'login-required'}).then(authenticated => {
+      this.setState({ keycloak: keycloak, authenticated: authenticated })
+    })
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {

@@ -22,6 +22,8 @@ import Stats from './Stats/Stats';
 
 import Tasks from './Tasks/Tasks';
 
+import Tickets from './Tickets/Tickets';
+
 export {
     // CardElements
     CardAuthor,
@@ -47,4 +49,6 @@ export {
     Stats,
     // Tasks
     Tasks,
+    //Tickets
+    Tickets
 };

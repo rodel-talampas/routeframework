@@ -2,7 +2,7 @@
 // // // tasks list for Tasks card in Dashboard view
 // #############################
 
-const tasks = [
+const tickets = [
   {
     checked: true,
     text: 'Sign contract for "What are conference organizers afraid of?"'
@@ -54,4 +54,4 @@ const tbody = [
 // tasks list for Tasks card in Dashboard view
 // data for <thead> of table in TableList view
 // data for <tbody> of table in TableList view
-export { tasks, thead, tbody };
+export { tickets, thead, tbody };
