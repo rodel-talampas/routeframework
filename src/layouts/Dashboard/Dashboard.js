@@ -7,8 +7,8 @@ import { Header, Footer, Sidebar } from "../../components";
 
 import dashboardRoutes from "../../routes/dashboard.js";
 
-
 import { keycloak } from '../../components/Keycloak/keycloak-config';
+// import { jiraclient } from '../../components/Jira/Jira-Connector';
 
 var ps;
 

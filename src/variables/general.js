@@ -2,7 +2,7 @@
 // // // tasks list for Tasks card in Dashboard view
 // #############################
 
-const tickets = [
+const tasks = [
   {
     checked: true,
     text: 'Sign contract for "What are conference organizers afraid of?"'
@@ -15,6 +15,24 @@ const tickets = [
     checked: true,
     text:
       "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit"
+  }
+];
+
+
+const tickets = [
+  {
+    number: 1,
+    severity: 'Bug',
+    description: 'Error on Page'
+  },
+  {
+    number: 2,
+    severity: 'Major',
+    description: 'Error on Page 2'
+  },{
+    number: 3,
+    severity: 'Bug',
+    description: 'Error on Page 4'
   }
 ];
 
@@ -54,4 +72,4 @@ const tbody = [
 // tasks list for Tasks card in Dashboard view
 // data for <thead> of table in TableList view
 // data for <tbody> of table in TableList view
-export { tickets, thead, tbody };
+export { tickets, tasks, thead, tbody };

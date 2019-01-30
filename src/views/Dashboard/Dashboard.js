@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Card,
   CardHeader,
@@ -19,6 +20,8 @@ import { Line, Bar } from "react-chartjs-2";
 
 import { PanelHeader, Stats, CardCategory, Tasks , Tickets} from "../../components";
 
+import { JiraTickets } from '../../components/Jira/Jira-Tickets';
+
 import {
   dashboardPanelChart,
   dashboardShippedProductsChart,
@@ -26,9 +29,17 @@ import {
   dashboard24HoursPerformanceChart
 } from "../../variables/charts.js";
 
-import { tickets } from "../../variables/general.js";
+import { tickets, tasks } from "../../variables/general.js";
+
 
 class Dashboard extends React.Component {
+
+// $url = 'https://&lt;oururl&gt;.jira.com/rest/api/2/search?jql=project%20%3D%20&lt;ourteam&gt;%20AND%20status%20in%20(%22In%20Analysis%22%2C%20%22In%20Development%22)%20ORDER%20BY%20priority%20DESC%2C%20status%20DESC&amp;fields%3Did,key,summary,priority,status,project,assignee';
+//jql=project=ATOPS%20and%20status%20in%20("In%20Progress"%2C%20"Open")&issuetypeNames=Bug+order+by+duedate&fields=id,key,description,priority,status
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div>
@@ -151,28 +162,25 @@ class Dashboard extends React.Component {
           </Row>
           <Row>
             <Col xs={12} md={6}>
-              <Card className="card-tickets">
+              <Card>
                 <CardHeader>
-                  <CardCategory>Open Tickets</CardCategory>
-                  <CardTitle tag="h4">Tickets</CardTitle>
+                  <CardCategory>Tenders Ticket List</CardCategory>
+                  <CardTitle tag="h4">{JiraTickets}</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Tickets tickets={tickets} />
+                  <Table responsive>
+                    <thead className=" text-primary">
+                      <tr>
+                        <th>No</th>
+                        <th>Severity</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <Tickets tickets={tickets} />
+                  </Table>
                 </CardBody>
-                <CardFooter>
-                  <hr />
-                  <Stats>
-                    {[
-                      {
-                        i: "now-ui-icons loader_refresh spin",
-                        t: "Updated 3 minutes ago"
-                      }
-                    ]}
-                  </Stats>
-                </CardFooter>
               </Card>
             </Col>
-
           </Row>
         </div>
       </div>

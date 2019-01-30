@@ -11,13 +11,16 @@ class Tickets extends React.Component {
     var number;
     var edit;
     var remove;
+
     for (var i = 0; i < this.props.tickets.length; i++) {
       number = "checkbox" + i;
       edit = "edit" + i;
       remove = "remove" + i;
       ticketList.push(
         <tr key={i}>
-          <td className="text-left">{this.props.tickets[i].text}</td>
+          <td className="text-left">{this.props.tickets[i].number}</td>
+          <td className="text-left">{this.props.tickets[i].severity}</td>
+          <td className="text-left">{this.props.tickets[i].description}</td>
           <td className="td-actions text-right">
             <Button id={edit} round icon iconMini neutral color="info">
               <i className="now-ui-icons ui-2_settings-90" />
@@ -25,22 +28,12 @@ class Tickets extends React.Component {
             <UncontrolledTooltip placement="top" target={edit} delay={0}>
               Edit Ticket
             </UncontrolledTooltip>
-            <Button id={remove} round icon iconMini neutral color="danger">
-              <i className="now-ui-icons ui-1_simple-remove" />
-            </Button>
-            <UncontrolledTooltip placement="top" target={remove} delay={0}>
-              Remove
-            </UncontrolledTooltip>
           </td>
         </tr>
       );
     }
     return (
-      <div className="table-full-width table-responsive">
-        <table className="table">
-          <tbody>{ticketList}</tbody>
-        </table>
-      </div>
+      <tbody>{ticketList}</tbody>
     );
   }
 }
