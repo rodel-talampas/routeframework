@@ -165,7 +165,7 @@ class Dashboard extends React.Component {
               <Card>
                 <CardHeader>
                   <CardCategory>Tenders Ticket List</CardCategory>
-                  <CardTitle tag="h4">{JiraTickets}</CardTitle>
+                  <CardTitle tag="h4">Bugs</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table responsive>

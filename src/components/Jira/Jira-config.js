@@ -1,4 +1,4 @@
-import {jiraserver,jirabase64} from "./Jira.js";
+import {jiraserver} from "./Jira.js";
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
@@ -9,8 +9,7 @@ var loginArgs = {
         "password": "GrudenFun987!"
     },
     headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Content-Type": "application/json"
     }
 };
 console.log(loginArgs);
@@ -20,7 +19,7 @@ var session;
 var searchArgs;
 
 client.post(loginurl, loginArgs, function(data, response){
-    if (response.statusCode == 200) {
+    if (response.statusCode === 200) {
         console.log('succesfully logged in, session:', data.session);
         session = data.session;
         searchArgs = {

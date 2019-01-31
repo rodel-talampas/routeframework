@@ -122,12 +122,14 @@ const dashboardPanelChart = {
   data: canvas => {
     const ctx = canvas.getContext("2d");
     var chartColor = "#FFFFFF";
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    var gradientStroke = ctx.createLinearGradient(10, 0, 100, 0);
     gradientStroke.addColorStop(0, "#80b6f4");
     gradientStroke.addColorStop(1, chartColor);
     var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
-    gradientFill.addColorStop(0, "RGB(85, 107, 47)");
-    gradientFill.addColorStop(1, "RGB(218, 165, 32)");
+    // gradientFill.addColorStop(0, "RGB(85, 107, 47)");
+    // gradientFill.addColorStop(1, "RGB(218, 165, 32)");
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
 
     return {
       labels: [

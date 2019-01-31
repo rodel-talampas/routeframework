@@ -4,5 +4,6 @@
   "ssl-required": "external",
   "resource": "frontend",
   "public-client": true,
+  "enable-cors": true,
   "confidential-port": 0
 }
