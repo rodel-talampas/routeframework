@@ -16,6 +16,8 @@ import Header from './Header/Header';
 
 import PanelHeader from './PanelHeader/PanelHeader';
 
+import PanelChart from './PanelHeader/PanelChart';
+
 import Sidebar from './Sidebar/Sidebar';
 
 import Stats from './Stats/Stats';
@@ -41,6 +43,8 @@ export {
     FormInputs,
     // Header
     Header,
+    //PanelChart,
+    PanelChart,
     // PanelHeader
     PanelHeader,
     // Sidebar

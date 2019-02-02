@@ -23,16 +23,16 @@ import { PanelChart, PanelHeader, Stats, CardCategory, Tasks , Tickets} from "..
 import { JiraTickets } from '../../components/Jira/Jira-Tickets';
 
 import {
-  dashboardPanelChart,dashboardPanelSonChart,
-  dashboardShippedProductsChart,
-  dashboardAllProductsChart,
+  dashboardPanelChart,dashboardPanelSonChart,serverCPUChart,
+  dashboardShippedProductsChart,serverDiskChart,
+  dashboardAllProductsChart,databaseChart,
   dashboard24HoursPerformanceChart
 } from "../../variables/charts.js";
 
 import { tickets, tasks } from "../../variables/general.js";
 
 
-class Dashboard extends React.Component {
+class MonDashboard extends React.Component {
 
 // $url = 'https://&lt;oururl&gt;.jira.com/rest/api/2/search?jql=project%20%3D%20&lt;ourteam&gt;%20AND%20status%20in%20(%22In%20Analysis%22%2C%20%22In%20Development%22)%20ORDER%20BY%20priority%20DESC%2C%20status%20DESC&amp;fields%3Did,key,summary,priority,status,project,assignee';
 //jql=project=ATOPS%20and%20status%20in%20("In%20Progress"%2C%20"Open")&issuetypeNames=Bug+order+by+duedate&fields=id,key,description,priority,status
@@ -48,57 +48,11 @@ class Dashboard extends React.Component {
         />
         <div className="content">
           <Row>
-            <Col xs={14} md={6}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>2018 CNs</CardCategory>
-                  <CardTitle tag="h4">Monthly</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                      <Line
-                        data={dashboardPanelChart.data}
-                        options={dashboardPanelChart.options}
-                      />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[{ i: "now-ui-icons arrows-1_refresh-69",
-                    t: "Just Updated"}]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={14} md={6}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>2018 SONs</CardCategory>
-                  <CardTitle tag="h4">Monthly</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                      <Line
-                        data={dashboardPanelSonChart.data}
-                        options={dashboardPanelSonChart.options}
-                      />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[{ i: "now-ui-icons arrows-1_refresh-69",
-                    t: "Just Updated"}]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Global Sales</CardCategory>
-                  <CardTitle tag="h4">Shipped Products</CardTitle>
+                  <CardCategory>Tenders</CardCategory>
+                  <CardTitle tag="h4">CPU Usage</CardTitle>
                   <UncontrolledDropdown>
                     <DropdownToggle
                       className="btn-round btn-simple btn-icon"
@@ -119,8 +73,8 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Line
-                      data={dashboardShippedProductsChart.data}
-                      options={dashboardShippedProductsChart.options}
+                      data={serverCPUChart.data}
+                      options={serverCPUChart.options}
                     />
                   </div>
                 </CardBody>
@@ -139,8 +93,8 @@ class Dashboard extends React.Component {
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>2018 Sales</CardCategory>
-                  <CardTitle tag="h4">All products</CardTitle>
+                  <CardCategory>Tenders</CardCategory>
+                  <CardTitle tag="h4">Disk Usage</CardTitle>
                   <UncontrolledDropdown>
                     <DropdownToggle
                       className="btn-round btn-simple btn-icon"
@@ -161,8 +115,8 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Line
-                      data={dashboardAllProductsChart.data}
-                      options={dashboardAllProductsChart.options}
+                      data={serverDiskChart.data}
+                      options={serverDiskChart.options}
                     />
                   </div>
                 </CardBody>
@@ -181,14 +135,14 @@ class Dashboard extends React.Component {
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Email Statistics</CardCategory>
-                  <CardTitle tag="h4">24 Hours Performance</CardTitle>
+                  <CardCategory>Tenders</CardCategory>
+                  <CardTitle tag="h4">Database Usage</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
                     <Bar
-                      data={dashboard24HoursPerformanceChart.data}
-                      options={dashboard24HoursPerformanceChart.options}
+                      data={databaseChart.data}
+                      options={databaseChart.options}
                     />
                   </div>
                 </CardBody>
@@ -200,33 +154,10 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
-
-          <Row>
-            <Col xs={12} md={6}>
-              <Card>
-                <CardHeader>
-                  <CardCategory>Tenders Ticket List</CardCategory>
-                  <CardTitle tag="h4">Bugs</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <Table responsive>
-                    <thead className=" text-primary">
-                      <tr>
-                        <th>No</th>
-                        <th>Severity</th>
-                        <th>Description</th>
-                      </tr>
-                    </thead>
-                    <Tickets tickets={tickets} />
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
         </div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default MonDashboard;
