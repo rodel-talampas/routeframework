@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "private": true,
   "main": "dist/index.js",
-  "homepage": "https://coc.gruden.com/dashboard",
+  "homepage": "https://poc-dashboard.tenders.gov.au/",
   "dependencies": {
     "@types/googlemaps": "3.30.12",
     "@types/markerclustererplus": "2.1.33",

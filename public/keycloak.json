@@ -1,9 +1,10 @@
 {
   "realm": "finance",
-  "auth-server-url": "http://id.tenders.gov.au/auth",
+  "auth-server-url": "https://id.tenders.gov.au/auth",
   "ssl-required": "external",
   "resource": "frontend",
   "public-client": true,
   "enable-cors": true,
-  "confidential-port": 0
+  "confidential-port": 0,
+  "realm-public-key" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqacUpFZ+PzHlsNGl1b08dE3vTWLptBrL7QMtDsMBEXiuKAvGLruQZPwPhVVHm/ll6KQzQqijSVITd7qlZF0Kz9fop70Hirl7aTF3bKQW3vWldPy6wo6mLC9j3cz3KBQ61p8s8QbiLxu2ssYd3Q+PRUt558BwnQct9egw3n47wZxCk25k02eCEh/hKuGBedHYS8I6bi7dEaPrebPsl3o8sZ5JgnBoNRRrajweXnc+iLHXS3isJRxhBAJW73cIc05zH1W0Dzhk+wlLwt8VOSaQWAM8hKzi7ZKTJinEp0PRmPSgo64A8MttDLQIJ66k+8DfWAuh6F0oqxm9mio9h11BkQIDAQAB"
 }
