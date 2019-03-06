@@ -24,9 +24,9 @@ class Dashboard extends React.Component {
       ps = new PerfectScrollbar(this.refs.mainPanel);
       document.body.classList.toggle("perfect-scrollbar-on");
     }
-    keycloak.init({onLoad: 'login-required'}).then(authenticated => {
-      console.log(keycloak.tokenParsed);
-      this.setState({ keycloak: keycloak, authenticated: authenticated, tokenParsed: keycloak.tokenParsed });
+    keycloak.init({onLoad: 'login-required'}).then(authenticated => { this.setState((state) => {
+        return  { keycloak: keycloak, authenticated: authenticated, tokenParsed: keycloak.tokenParsed }
+      })
     })
   }
   componentWillUnmount() {
@@ -42,36 +42,46 @@ class Dashboard extends React.Component {
     }
   }
   render() {
-    return (
-      <div className="wrapper">
-        <Sidebar {...this.props} routes={dashboardRoutes} />
-        <div className="main-panel" ref="mainPanel">
-          <Header {...this.props} />
-          <Switch>
-            {dashboardRoutes.map((prop, key) => {
-              if (prop.collapse) {
-                return prop.views.map((prop2, key2) => {
-                  return (
-                    <Route
-                      path={prop2.path}
-                      component={prop2.component}
-                      key={key2}
-                    />
-                  );
-                });
-              }
-              if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-              return (
-                <Route path={prop.path} component={prop.component} key={key} />
-              );
-            })}
-          </Switch>
-          <Footer fluid />
-        </div>
-      </div>
-    );
-  }
+    if(this.state.keycloak) {
+      if(this.state.authenticated)
+        return (
+            <div className="wrapper">
+              <Sidebar {...this.props} routes={dashboardRoutes} />
+              <div className="main-panel" ref="mainPanel">
+                <Header {...this.props} />
+                <Switch>
+                  {dashboardRoutes.map((prop, key) => {
+                    if (prop.collapse) {
+                      return prop.views.map((prop2, key2) => {
+                        return (
+                          <Route
+                            path={prop2.path}
+                            component={prop2.component}
+                            key={key2}
+                          />
+                        );
+                      });
+                    }
+                    if (prop.redirect)
+                      return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+                    return (
+                      <Route path={prop.path} component={prop.component} key={key} />
+                    );
+                  })}
+                </Switch>
+                <Footer fluid />
+              </div>
+            </div>
+        );
+      }
+      else {
+        return (
+          <div className="wrapper">
+          <Sidebar {...this.props} routes={dashboardRoutes} />
+          </div>
+        )
+      }
+    }
 }
 
 export default Dashboard;
