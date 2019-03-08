@@ -5,35 +5,62 @@ import PropTypes from "prop-types";
 
 import { Button, Checkbox } from "../../components";
 
+import { session } from '../Jira/Jira-config';
+import API from '../Jira/JiraAPI';
+import axios from 'axios';
 class Tickets extends React.Component {
-  render() {
-    var ticketList = [];
-    var number;
-    var edit;
-    var remove;
 
-    for (var i = 0; i < this.props.tickets.length; i++) {
-      number = "checkbox" + i;
-      edit = "edit" + i;
-      remove = "remove" + i;
-      ticketList.push(
-        <tr key={i}>
-          <td className="text-left">{this.props.tickets[i].number}</td>
-          <td className="text-left">{this.props.tickets[i].severity}</td>
-          <td className="text-left">{this.props.tickets[i].description}</td>
-          <td className="td-actions text-right">
-            <Button id={edit} round icon iconMini neutral color="info">
-              <i className="now-ui-icons ui-2_settings-90" />
-            </Button>
-            <UncontrolledTooltip placement="top" target={edit} delay={0}>
-              Edit Ticket
-            </UncontrolledTooltip>
-          </td>
-        </tr>
-      );
-    }
+  constructor(props) {
+    super(props);
+    this.state = { jiratickets: [], headers: null };
+  }
+
+  componentDidMount() {
+    session.then(cookie=>{
+      const json = JSON.stringify(cookie);
+      console.log("Json: ", json);
+      const headers = {
+        headers: {
+          cookie : cookie.name + "=" + cookie.value,
+          "Content-Type": "application/json"
+        }
+      };
+      const body = {
+        "jql": "project=ATCO and status in ('In Progress','Open') order by priority desc, duedate asc&fields=id,key,description,priority,status,issuetype"
+      }
+
+      const response =  axios.get('https://06gfkxap49.execute-api.ap-southeast-2.amazonaws.com/dev/jira/getATCO').then(response=>{
+        console.log("Query:", response)
+
+        var ticketList = [];
+        var number;
+        var edit;
+        var remove;
+
+        for (var i = 0; i < response.data.length; i++) {
+          ticketList.push(
+            <tr key={i}>
+            <td className="text-left">{response.data[i].key}</td>
+            <td className="text-left">{response.data[i].type}</td>
+            <td className="text-left">{response.data[i].priority}</td>
+            <td className="text-left">{response.data[i].status}</td>
+            </tr>
+          );
+        }
+
+        this.setState((state)=>{
+          return { jiratickets: ticketList}
+        })
+
+        console.log("Query:", ticketList)
+      });
+      return Promise.resolve("OK")
+    })
+  }
+
+  render() {
     return (
-      <tbody>{ticketList}</tbody>
+      <tbody>{this.state.jiratickets}</tbody>
     );
   }
 }

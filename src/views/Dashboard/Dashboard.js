@@ -20,7 +20,7 @@ import { Line, Bar } from "react-chartjs-2";
 
 import { PanelChart, PanelHeader, Stats, CardCategory, Tasks , Tickets} from "../../components";
 
-import { JiraTickets } from '../../components/Jira/Jira-Tickets';
+// import { JiraTickets } from '../../components/Jira/Jira-Tickets';
 
 import {
   dashboardPanelChart,dashboardPanelSonChart,

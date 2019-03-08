@@ -1,4 +1,5 @@
 import {jiraserver} from "./Jira";
+import API from './JiraAPI';
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
@@ -20,37 +21,61 @@ var loginArgs = {
     headers
 };
 
-console.log(loginArgs);
-//
-var loginurl = jiraserver+'/rest/auth/1/session';
+const jiraSession = async () => {
+  try {
+    const response =  await API.post('rest/auth/1/session', body, headers);
+    console.log ("Res:", response);
+
+    if (response.status === 200)
+      return response.data.session;
+    throw new Error ("Access Denied. Error code:",response.status)
+  } catch (error) {
+    console.error(error)
+  }
+  return Promise.resolve("OK")
+}
+
+const session = jiraSession();
+// const jiraresponse = session;
+// const jiraresponse = async () => {
+//   try {
+//       const response = jiraSession();
+//       console.log("Res:",response)
+//       return response;
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
+
+  // if (response.status === 200) {
+  //   session = response.data.session;
+  //   console.log('succesfully logged in, session:', session);
+  // }
 
 
-function JiraLogin()
-const axios = require('axios');
-var callx = axios.post(loginurl, body, headers).then(response => {
-    if (response.status === 200) {
-        console.log('succesfully logged in, session:', response.data.session);
-        session = response.data.session;
-        searchArgs = {
-          headers: {
-            // Set the cookie from the session information
-            "cookie": session.name + '=' + session.value,
-            "Content-Type": "application/json"
-          },
-          data: {
-            // Provide additional data for the JIRA search. You can modify the JQL to search for whatever you want.
-            //%20and%20status%20in%20('In%20Progress'%2C%20'Open')&issuetypeNames=Bug+order+by+duedate&fields=id,key,description,priority,status
-            "jql": "project=ATOPS"
-          }
-        };
-    } else {
-       console.log("Login failed :(");
-    }
-    return "Rodel"
-  })
-  .catch(error => {
-    console.log(error);
-  });
+// .then(response => {
+//   if (response.status === 200) {
+//       session = response.data.session;
+//       // searchArgs = await {
+//       //   headers: {
+//       //     // Set the cookie from the session information
+//       //     "cookie": session.name + '=' + session.value,
+//       //     "Content-Type": "application/json"
+//       //   },
+//       //   data: {
+//       //     // Provide additional data for the JIRA search. You can modify the JQL to search for whatever you want.
+//       //     //%20and%20status%20in%20('In%20Progress'%2C%20'Open')&issuetypeNames=Bug+order+by+duedate&fields=id,key,description,priority,status
+//       //     "jql": "project=ATOPS"
+//       //   }
+//       // };
+//       console.log('succesfully logged in, session:', session);
+//   } else {
+//      console.log("Login failed :(");
+//   }
+// })
+// .catch(error => {
+//   console.log(error);
+// });
 
 // client.post(loginurl, loginArgs, function(data, response){
 //         if (response.statusCode === 200) {
@@ -76,5 +101,4 @@ var callx = axios.post(loginurl, body, headers).then(response => {
 //
 //   console.log("RESPONSE: ". req);
 
-console.log("Session : ", callx);
-export { session, searchArgs }
+export { session }
