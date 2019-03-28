@@ -29,7 +29,7 @@ import {
   dashboard24HoursPerformanceChart
 } from "../../variables/charts.js";
 
-import { tickets, tasks } from "../../variables/general";
+import { tasks } from "../../variables/general";
 
 
 class AppDashboard extends React.Component {
@@ -132,7 +132,7 @@ class AppDashboard extends React.Component {
                         <th>Description</th>
                       </tr>
                     </thead>
-                    <Tickets tickets={tickets} />
+                    <Tickets/>
                   </Table>
                 </CardBody>
               </Card>

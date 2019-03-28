@@ -25,6 +25,7 @@ class Dashboard extends React.Component {
       document.body.classList.toggle("perfect-scrollbar-on");
     }
     keycloak.init({onLoad: 'login-required'}).then(authenticated => { this.setState((state) => {
+        console.log(keycloak.tokenParsed);
         return  { keycloak: keycloak, authenticated: authenticated, tokenParsed: keycloak.tokenParsed }
       })
     })

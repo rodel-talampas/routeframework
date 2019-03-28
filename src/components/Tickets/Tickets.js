@@ -29,7 +29,7 @@ class Tickets extends React.Component {
         "jql": "project=ATCO and status in ('In Progress','Open') order by priority desc, duedate asc&fields=id,key,description,priority,status,issuetype"
       }
 
-      const response =  axios.get('https://06gfkxap49.execute-api.ap-southeast-2.amazonaws.com/dev/jira/getATCO').then(response=>{
+      const response =  axios.get('https://06gfkxap49.execute-api.ap-southeast-2.amazonaws.com/dev/getATCO').then(response=>{
         console.log("Query:", response)
 
         var ticketList = [];
@@ -64,9 +64,4 @@ class Tickets extends React.Component {
     );
   }
 }
-
-Tickets.propTypes = {
-  tickets: PropTypes.arrayOf(PropTypes.object)
-};
-
 export default Tickets;
